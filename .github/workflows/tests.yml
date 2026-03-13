@@ -70,7 +70,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: robot-results
-          path: results/
+          path: ./
 
       - name: Fail workflow if robot tests failed
         if: steps.robot.outcome == 'failure'
