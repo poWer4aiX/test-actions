@@ -14,6 +14,11 @@ Test With German Style
 Test Lang
     [Arguments]    ${lang}
     &{e}    Get Environment Variables
+    FOR    ${key}   IN   @{e.keys()}
+        IF    '${key}'.startswith('LC_') or '${key}'.startswith('LANG') 
+            Remove From Dictionary    ${e}    ${key}
+        END
+    END
     Set To Dictionary    ${e}    LANG=${lang}
     Log    ${e}    
 #    &{e}    Create Dictionary    XAUTHORITY=%{XAUTHORITY}    DISPLAY=%{DISPLAY}     LANG=${lang}
