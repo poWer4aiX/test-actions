@@ -28,7 +28,7 @@ Test Lang
     Wait For Load State    domcontentloaded    timeout=3s
     # Take Screenshot
     
-    Click With Options    selector=id=d    position_x=120    position_y=10
+    Click With Options    selector=id=d    position_x=100    position_y=10
     Take Screenshot
     Sleep   1s
 
