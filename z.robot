@@ -1,4 +1,6 @@
 *** Settings ***
+Library    Collections
+Library    OperatingSystem
 Library    Browser
 
 *** Test Cases ***
@@ -11,8 +13,10 @@ Test With German Style
 *** Keywords ***
 Test Lang
     [Arguments]    ${lang}
-    &{e}    Create Dictionary    XAUTHORITY=%{XAUTHORITY}    DISPLAY=%{DISPLAY}     LANG=${lang}
-    Log    ${e}
+    &{e}    Get Environment Variables
+    Set To Dictionary    ${e}    LANG=${lang}
+    Log    ${e}    
+#    &{e}    Create Dictionary    XAUTHORITY=%{XAUTHORITY}    DISPLAY=%{DISPLAY}     LANG=${lang}
     New Browser    browser=chromium    headless=${False}    env=${e}
     New Context    colorScheme=dark    viewport={"width": 640, "height": 480}
     New Page    url=file:${CURDIR}/z.html
@@ -21,6 +25,7 @@ Test Lang
     
     Click With Options    selector=id=d    position_x=120    position_y=10
     Take Screenshot
+    Sleep   1s
 
     Close Page
     Close Context
