@@ -22,7 +22,7 @@ Test Lang
     Set To Dictionary    ${e}    LANG=${lang}
     Log    ${e}    
 #    &{e}    Create Dictionary    XAUTHORITY=%{XAUTHORITY}    DISPLAY=%{DISPLAY}     LANG=${lang}
-    New Browser    browser=chromium    headless=${False}    env=${e}
+    New Browser    browser=chromium    headless=${True}    env=${e}
     New Context    colorScheme=dark    viewport={"width": 640, "height": 480}
     New Page    url=file:${CURDIR}/z.html
     Wait For Load State    domcontentloaded    timeout=3s
