@@ -63,6 +63,7 @@ jobs:
         id: robot
         run: |
           locale
+          locale -a
           robot z.robot
         continue-on-error: true  # allows workflow to continue even if some tests fail
 
